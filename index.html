@@ -1,0 +1,208 @@
+<!-- saved from url=(0047)https://www.cs.cmu.edu/~peiyunh/tiny/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="StyleSheet" href="./files/style.css" type="text/css" media="all">
+
+    <title>ARTIC3D: Learning Robust Articulated 3D Shapes from Noisy Web Image Collections</title>
+
+    <style type="text/css">
+      body {
+	    font-family : Times;
+	    background-color : #f2f2f2;
+	    font-size : 15px;
+      }
+
+      .content {
+	    width : 800px;
+	    padding : 25px 25px;
+	    margin : 25px auto;
+	    background-color : #fff;
+	    border-radius: 20px;
+      }
+      .description {
+        font-family: "Times";
+        white-space: pre;
+        text-align: left;
+      }
+
+      .content-title {
+	    background-color : inherit;
+            margin-top: 5px;
+            padding-top: 5px;
+	    margin-bottom : 0;
+	    padding-bottom : 0;
+      }
+
+      a, a:visited {
+	    text-decoration: none;
+	    color : blue;
+      }
+
+      .anchor {
+      color: inherit;
+      }
+      #authors {
+	    text-align : center;
+      }
+
+      #conference {
+	    text-align : center;
+	    font-style : italic;
+      }
+
+      #authors a {
+	    margin : 0 10px;
+      }
+
+      h1 {
+	    text-align : center;
+	    font-family : Times;
+	    font-size : 35px;
+      }
+
+      h2 {
+	    font-family : Times;
+	    font-size : 25px;
+	    padding : 0; margin : 10px;
+      }
+
+      h3 {
+	    font-family : Times;
+	    font-size : 20px;
+	    padding : 0; margin : 10px;
+      }
+
+      p {
+	    font-family : Times;
+	    line-height : 130%;
+	    margin : 10px;
+      }
+
+      big {
+	    font-family : Times;
+	    font-size : 20px;
+      }
+
+      li {
+	    margin : 10px 0;
+      }
+
+      .samples {
+	    float : left;
+	    width : 50%;
+	    text-align : center;
+      }
+
+      .cond {
+	    float : left;
+	    margin : 0 40px;
+      }
+
+      .cond-container {
+	    width : 700px;
+	    margin : 0 auto;
+	    text-align : center;
+      }
+      #vidalign {
+         display: block;
+         margin: 0px;
+         padding: 0px;
+         position: relative;
+         top: 90px;
+         height: auto;
+         max-width: auto;
+         overflow-y: hidden;
+         overflow-x:auto;
+         word-wrap:normal;
+         white-space:nowrap;
+      }
+
+    </style>
+  </head>
+
+
+
+  <body>
+
+    <div class="content content-title" style="text-align: center;">
+      <h1>ARTIC3D: Learning Robust Articulated 3D Shapes from Noisy Web Image Collections</h1>
+
+      <p id="authors">
+        <table align="center" style="width:100%; text-align:center; table-layout: fixed">
+          <tr>
+          <th><a href="https://www.chhankyao.com/">Chun-Han Yao<sup>1</sup></a></th>
+          <th><a href="https://amitraj93.github.io">Amit Raj<sup>2</sup></a></th>
+          <th><a href="https://hfslyc.github.io">Wei-Chih Hung<sup>3</sup></a></th>
+          <th><a href="http://people.csail.mit.edu/yzli/">Yuanzhen Li<sup>2</sup></a></th>
+          </tr>
+        </table>
+        <table align="center" style="width:100%; text-align:center; table-layout: fixed">
+          <tr>
+          <th><a href="http://people.csail.mit.edu/mrub/">Michael Rubinstein<sup>2</sup></a></th>
+          <th><a href="http://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang<sup>124</sup></a></th>
+          <th><a href="https://varunjampani.github.io/">Varun Jampani<sup>2</sup></a></th>
+          </tr>
+        </table>
+        <table align="center" style="width:100%; text-align:center; table-layout: fixed">
+          <th><sup>1</sup>UC Merced</th>
+          <th><sup>2</sup>Google Research</th>
+          <th><sup>3</sup>Waymo</th>
+          <th><sup>4</sup>Yonsei University</th>
+        </table>
+      </p>
+      </div>
+
+
+
+    <div class="content">
+      <div style="float: right; width:70px; margin-top: 0px; margin-bottom: 25px"></div>
+        <h3>Framework Overview</h3>
+        <div>
+          <img src="./figures/cover.png" width="95%">
+        </div>
+        <p>
+          We propose ARTIC3D, a diffusion-guided optimization framework to estimate the 3D shape and texture of articulated animal bodies from sparse and noisy image in-the-wild. Results show that ARTIC3D outputs are detailed, animatable, and robust to occlusions or truncation.
+        </p>
+    </div>
+
+
+
+    <div class="content">
+      <h2>Abstract</h2>
+      <p>
+        Estimating 3D articulated shapes like animal bodies from monocular images is inherently challenging due to the ambiguities of camera viewpoint, pose, texture, lighting, etc. We propose ARTIC3D, a self-supervised framework to reconstruct per-instance 3D shapes from a sparse image collection in-the-wild. Specifically, ARTIC3D is built upon a skeleton-based surface representation and is further guided by 2D diffusion priors from Stable Diffusion. First, we enhance the input images with occlusions/truncation via 2D diffusion to obtain cleaner mask estimates and semantic features. Second, we perform diffusion-guided 3D optimization to estimate shape and texture that are of high-fidelity and faithful to input images. We also propose a novel technique to calculate more stable image-level gradients via diffusion models compared to existing alternatives. Finally, we produce realistic animations by fine-tuning the rendered shape and texture under rigid part transformations. Extensive evaluations on multiple existing datasets as well as newly introduced noisy web image collections with occlusions and truncation demonstrate that ARTIC3D outputs are more robust to noisy images, higher quality in terms of shape and texture details, and more realistic when animated.
+      </p>
+      <div id="teaser" style="margin: 12px; text-align: left;border-top: 1px solid lightgray;padding-top: 12px;">
+	    <a href="">
+	        <strong>[Paper]</strong>
+	    </a>
+      <a href="">
+	        <strong>[Supp]</strong>
+	    </a>
+      <a href="">
+	        <strong>[Code]</strong>
+	    </a>
+      </div>
+    </div>
+
+
+    <div class="content">
+      <h2>Related work</h2>
+        <p>
+          <a href="https://chhankyao.github.io/hi-lassie/">Hi-LASSIE: High-Fidelity Articulated Shape and Skeleton Discovery from Sparse Image Ensemble. CVPR 2023.</a><br>
+          <a href="https://chhankyao.github.io/lassie/">LASSIE: Learning Articulated Shape from Sparse Image Ensemble via 3D Part Discovery. NeurIPS 2022.</a><br>
+          <a href="https://jasonyzhang.com/ners/">NeRS: Neural Reflectance Surfaces for Sparse-View 3D Reconstruction in the Wild. NeurIPS 2021.</a><br>
+          <a href="https://nileshkulkarni.github.io/acsm/">Articulation Aware Canonical Surface Mapping. CVPR 2020.</a><br>
+        </p>
+    </div>
+
+
+
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+  <tr><td>
+    <p align="right"><font size="2">
+      <a href="https://www.cs.cmu.edu/~peiyunh/">Webpage design borrowed from Peiyun Hu</a> </font>
+    </p>
+  </td></tr>
+</table>
+
+</body></html>
